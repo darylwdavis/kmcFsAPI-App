@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="favicon.ico">
+  <script type="text/javascript">
+      var element_id = "manualRefreshHref" ; //namew of div or object that you want the link to appear in (Div is best)
+      var link_text = "<p>Try a manual <a href='historyIndex.html'>refresh</a>.</p>" ; //link location
+      var time = 20; //time in seconds until display
+      setTimeout(function(){document.getElementById(element_id).innerHTML = link_text},time*1000)
+
+    window.onerror = function(message, url, lineNumber) {
+      // detect if the error is something you know how to handle
+      if (message) {
+        // display an error message to the user
+        console.log(message);
+        // return true to short-circuit default error behavior
+        return true;
+      } else {
+        // run the default error handling of the browser
+        return false;
+      }
+    }
+  </script>
+  
+  <title>KMC Commander Bx History</title>
+    <script src="jquery.js"></script>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap.min.js"></script>
+    <link href="site.css" rel="stylesheet">
+    <!-- <link href="style.min.css" rel="stylesheet"> -->
+    <script src="config.js"></script>
+    <script src="cmdrUtil.js"></script>
+    <script src="getHistory.js"></script>
+    <!-- <link href="dataTables.bootstrap.css" rel="stylesheet"> -->
+    <!-- <script src="jstree.min.js"></script> -->
+    <script src="sha1.js"></script>
+
+ </head>
+  <body>
+      <div class="modal fade" id="loginModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Please login to your Commander BX Appliance</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="cloud-host-username">Username</label>
+              <input type="text" class="form-control" id="cloud-host-username">
+            </div>
+            <div class="form-group">
+              <label for="cloud-host-password">Password</label>
+              <input type="password" class="form-control" id="cloud-host-password">
+            </div>
+            <div id="cloud-host-basicStatus" class="status-text"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="btn btn-primary" id="cloud-modal-login">Login</div>
+          </div>
+        </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-header">   
+        <a class="navbar-brand" href="historyIndex.html">Commander BX Data</a>
+      </div>
+       <!-- Top Menu Items -->
+      <ul class="nav navbar-right top-nav" style="margin-right:0;padding-right:10px;padding-top:13px">
+        <li>
+          <span id="navbar-subtitle-host" style="margin-right:10px;"></span>
+          <span id="navbar-subtitle-project" style="margin-right:10px;"></span>
+          <span class="btn btn-link link-div" id="navbar_logout" style="margin-right:10px;">Log out</span>
+        </li>
+      </ul>
+    </nav>
+
+      <div class="container">
+
+      <div id="tab-all" style="margin-top:78px;">
+       <div class="btn btn-primary" id="get-history">History</div> 
+       <div class="btn btn-primary" id="watch-subscribe">Open Watch</div>
+      <div class="btn btn-primary" id="update-timer-enable">Auto Update</div>
+
+      <span id="last-update" style="margin-left:10px;"></span>
+      <div>
+        <h4 id="getData" style="display: inline-block;white-space:pre-wrap;"></h4>
+       <table id="discover-data" style="width:100%">  </table>
+      </div>
+    <footer>
+
+        <div style="margin-top:300px;"> </div>
+        <div class="modal-footer">
+          <div id="manualRefreshHref"></div>
+           
+
+        </div>
+    </footer>
+</body>
+</html>
